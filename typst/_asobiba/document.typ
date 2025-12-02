@@ -138,7 +138,7 @@ It's just a template.
 
 $
   ZFC |+ Con ( ZFC ) \
-  ZFC ..c ZF + AC #<zfc>
+  ZFC := ZF + AC #<zfc>
 $
 
 // add an info clue
@@ -258,3 +258,24 @@ $ qtyrange("1e3", "2e3", "meter per second squared", per: "/", delimiter: "\"to\
 ))
 
 #ean("1234567890128")
+
+
+
+これなら何も問題が無いよね？
+
+#isbnx("9784627157217")
+#ean("1923042072004")\
+
+フォントは游明朝，アルファベットは Times New Roman を採用．
+太字は *游ゴシック* と *Arial* を採用．
+
+*国際基準に則るなり～*
+
+にゃーん
+
+テンプレートにしては重すぎるから改良を検討中．
+
+#include "inc.typ"
+
+楽しいね，Typst.
+

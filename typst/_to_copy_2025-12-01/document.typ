@@ -120,9 +120,5 @@
   //  title-stile: 2,
 )
 
-It's just a template.
-
-これはテンプレートです。
-
 //#outline(title: "目次", depth: 2, indent: auto)
 
