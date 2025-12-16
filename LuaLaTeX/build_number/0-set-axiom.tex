@@ -1,0 +1,85 @@
+\chapter{基礎知識}
+
+ここでは基礎的な集合論や公理系などの準備をします．
+
+具体的には
+
+もう分かってる人や，逆に何言っているのかよくわからない人は飛ばしても大丈夫です．
+ただし，ざっとは見てください．
+
+\section{心構え}
+
+\section{論理}
+
+\newpage
+\section{集合論}
+
+集合論としては\(\mathtt{ZFC}\)集合論を仮定します．
+要は大体普通の集合論ということです．
+
+まずは \(\mathtt{ZF}\)集合論を作ります．わからなくていいです．
+
+\begin{ax}{ZF}{ZF}
+	以下の公理系を \emph{\(\mathtt{ZF}\)集合論 (Zermelo--Fraenkel set theory)} という．
+	ただし，\(\phi,\varphi\)は自由変数に\(B\)を持たない任意の論理式である．
+	\begin{align}
+		&\exists x \forall y \lnot (y \in x).\\
+		&\forall x \forall y ( \forall z ( z \in x \leftrightarrow z \in y ) \to x = y).\\
+		&\forall x [ \exists a ( a \in x)
+			\to \exists y (y \in x \land \lnot \exists z( z \in x \land z \in y))].\\
+		&\forall A \forall w_1,\ldots,w_n\exists B \forall x (
+			x\in B \leftrightarrow [y \in A \land \phi]).\\
+		&\forall \mathcal{F} \exists A \forall Y \forall x
+			[(x \in Y \land Y \in \mathcal{F}) \to x \in A ].\\
+		&\forall A \forall w_1,\ldots,w_n
+			[\forall x ( x \in A \to \exists ! y\varphi )
+			\to \exists B \forall x (x \in A \to \exists y (y \in B \land \varphi))].\\
+		&\exists X[\exists e(\forall z \lnot(z \in e)\land e \in X)
+			\land \forall x (x \in X \to \exists y(y \in X \land \forall a (a \in y \to (a \in x \lor a = x))))].\\
+		&\forall A \exists P \forall B [B \in P \leftrightarrow \forall z (z \in B \to z \in A)].
+	\end{align}
+\end{ax}
+
+ここからまずは基本的な集合論の記号を整理していきます．それによって少し\(\mathtt{ZF}\)を書き直していきます．
+
+\begin{dfn}{集合と元}{set}
+	\axref{ZF}を満たす``ものの集まり''のことを\emph{集合 (set)}という．
+	集合\(X\)に含まれる個々の``もの\(x\)''，
+	つまり\(x \in X\)と書かれる\(x\)のことを\(X\)の\emph{元 (element)}という．
+\end{dfn}
+
+\begin{dfn}{部分集合}{subset}
+	集合\(A,B\)について\(x \in A \to x \in B\) が成り立つとき，
+	\(A\)は\(B\)の\emph{部分集合 (subset)}といい，\(A \subset B\)と書く．
+\end{dfn}
+
+\begin{dfn}{内包的記法}{intension-notation}
+	\axref{ZF} (4) より，論理式\(\phi(x)\)を満たす要素だけを集めた集合を\(\set{x | \phi(x)}\)と表記する．
+\end{dfn}
+
+特に重要となる公理を挙げておきます．
+
+\begin{dfn}{空集合}{emptyset}
+	\axref{ZF}　(1) より，いかなる要素も持たない集合が存在する．その集合を\(\varnothing\)と書く．
+\end{dfn}
+
+\begin{ax}{無限公理}{axiom-of-infinity}
+	空集合\(\varnothing\)を含み，なおかつ\(n\)を含むときに\(n \cup \{n\}\)も含むような集合が存在する．
+\end{ax}
+
+\begin{dfn}{写像}{mapping}
+	content...
+\end{dfn}
+
+\section{関係}
+
+\begin{dfn}{同値関係・同値類}{equivalence-relation}
+	content...
+\end{dfn}
+
+\begin{dfn}{順序}{order}
+	content...
+\end{dfn}
+\begin{ex}
+	content...
+\end{ex}

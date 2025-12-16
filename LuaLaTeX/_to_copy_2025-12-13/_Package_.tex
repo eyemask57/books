@@ -1,0 +1,252 @@
+\documentclass[
+	book,
+%	report,
+	head_space=20mm,
+	foot_space=25mm,
+%	gutter=20mm,
+	a4paper,
+%	titlepage,
+	fontsize=11bp
+	]{jlreq}
+%基本はarticle
+%オプションに記入していく: book, report
+
+\usepackage{titleps}
+%\usepackage[times]{quotchap}
+%チャプターいじれる奴だけどうまく機能しない
+%\pagestyle{headings}
+%ノンブルの出し方
+%\usepackage{gentombow}
+%日本式トンボを出力
+%\usepackage{titleps}
+%ヘッダー
+
+%---beamer用---
+%\documentclass[unicode,12pt]{beamer}
+%\usepackage{luatexja}% 日本語したい
+%\usepackage[ipaex]{luatexja-preset}% IPAexフォントしたい
+%\renewcommand{\kanjifamilydefault}{\gtdefault}% 既定をゴシック体に
+%\usetheme{Copenhagen}%あとは欧文の場合と同じ
+%---beamer用---
+
+%LuaLaTeXでコンパイルする前提なので注意
+
+\usepackage{luatexja-ruby,luacode,luacolor}
+%	ルビを振れる，luaコードを利用できる，luaLaTeX用のcolorパッケージ
+
+%\usepackage[T1]{fontenc}
+%\usepackage{lmodern}
+
+\usepackage[no-math]{fontspec}
+%	必須．Unicordを使うやつ
+\usepackage{luatexja-otf}
+%	Unicordを入力できるようにする
+\usepackage{luatexja-fontspec}
+%\setmainjfont{UDDigiKyokashoNP-R}[BoldFont=UDDigiKyokashoNP-B]
+%\setmainfont{UDDigiKyokashoNP-R}[BoldFont=UDDigiKyokashoNP-B]
+%	本文中のフォント設定
+
+%\usepackage[top=15mm, hmargin=20mm, bottom=25mm]{geometry}
+%	ページの余白を指定することができる
+%	jlreqより休止中
+
+\usepackage{bxpapersize}
+%	サイズ指定するだけ
+\usepackage{comment}
+%	長文をコメントアウトする
+%	comment環境を用いる
+%	インデントしてはいけない
+
+%\usepackage{lipsum}
+%	英文用だみーてきすと
+
+%\usepackage{datestamp}
+%	なんどコンパイルしても消えないタイムスタンプを残せる
+
+%\usepackage{titlesec}
+%	なんと見出しについていじれる
+%\usepackage{tocloft}
+%	目次についていじれる
+%\usepackage{picture}
+%	tikzみたいなやつ
+
+%\usepackage{makeidx}
+%\makeindex
+%	索引の作成
+%	\index{よみ@索引項目}(和文)
+%	\index{索引項目}(英文)
+
+%\usepackage{appendix}
+%	補遺の制御を簡単にする
+
+%\usepackage[number]{abstract}
+%	abstractをいじれる
+%	- オプションなし
+%	- number
+%	- runin
+%	- original
+%	- style
+%	- addtotoc
+
+%\usepackage{pdfpages}
+%	pdfをそのままページとして挿入可能
+%\usepackage{Bxpdfver}
+%	まれに必要になるらしいやつ．休止中
+
+\usepackage{amsmath,amssymb,amsfonts,mathtools,empheq,autobreak,breqn,esint,latexsym}
+%	必須．数学の記号・ギリシャ文字などの拡張
+
+%\usepackage{amsthm}
+%	定理環境の拡張．現在はtcolorbox使用により停止中
+
+\usepackage{bm,bbm}
+%	数式内で太字を楽に出力．\bm{}で出力
+\usepackage{euscript,mathrsfs}
+%	数式内の筆記体(カリグラフィー)，花文字(スクリプトフォント)を追加．\mathscr
+
+\usepackage{upgreek}
+%	立体ギリシャ文字を追加
+\usepackage[bbgreekl]{mathbbol}
+\DeclareSymbolFontAlphabet{\mathbb}{AMSb}
+\DeclareSymbolFontAlphabet{\mathbbl}{bbold}
+\DeclareMathSymbol{\bbepsilon}{\mathord}{bbold}{"0F}
+%	黒板文字の追加．
+%	定義がみすってるらしいので\bbepsilonで再定義している．
+%	amsfontを大文字で使いたいので\mathbblを別途定義
+
+%\usepackage[geometry,misc]{ifsym}
+%\usepackage{textcomp}
+%	記号の追加多数
+
+\usepackage{physics2}
+%	物理でよく用いる記号の拡張
+%	physics packageは問題点が多すぎるため使用は非推奨
+\usepackage{derivative}
+\usepackage{}
+%\usepackage{askmaps}
+%	カルノー図を描く
+%\usepackage{mhchem}
+%	化学式・化学反応式．\ce{}で出力
+%\usepackage{chemmacros}
+%\chemsetup{ modules = all }
+
+%\usepackage{mleftright}
+%	かっこのさゆうの空白を調節した\mleft,\mrightをついか
+\usepackage{diffcoeff}
+%	微分記法を提供してくれる
+%\usepackage{nicematrix}
+%	自由度の高い行列やNiceTabular環境の提供
+%\usepackage{esvect}
+%	矢線ベクトル表記のバリエーションを提供
+%	下付き文字のためのコマンドを提供
+%\usepackage{tensor}
+%	テンソル表記のためのコマンドを提供
+\usepackage{braket}
+%	Diracのbra-ket記法のためのコマンドを提供
+%	集合論における内包的記法のためのコマンドを提供
+%\usepackage{centernot}
+%	Feynmanのスラッシュ記法のためのコマンドを提供
+\usepackage{accents}
+%	数学記号に複数のアクセントをつけられるようにする
+%\usepackage{witharrows}
+%	数式環境で式変形の説明用の矢印をかける
+%\usepackage{cascade}
+%	推論規則を書ける
+
+
+\usepackage[thicklines]{cancel}
+%	消す項につける斜線の出力
+\usepackage{siunitx}
+%	SI単位の出力．単位のみは\si{}，数字を入れるときは\SI{}{}
+%\usepackage{polyglossia}
+%	多言語対応のためのパッケージ
+\usepackage{enumitem}
+%	箇条書きのレパートリーを増やす
+
+\usepackage{graphicx}
+%	画像の挿入・拡大・回転を行う
+\usepackage{float}
+%\figureの[H]を提供
+%here package の後釜
+
+\usepackage{array}
+%	tabular環境の線などの出力を微妙に改善
+%	標準は\hline
+%\usepackage{diagbox}
+%	セル内に斜線を引く
+%\usepackage{dcolumn}
+%	小数点で整列できる
+%\usepackage{longtable}
+%	ページをまたぐ表が作れる
+\usepackage{truthtable}
+%	真理値表の出力
+%\usepackage{booktabs}
+%	横三本のみの線による表を作成．縦は出力出来ない
+%	tabular環境で使用
+%	\toptabs \midtabs \bottomtabsで線を出力
+%\usepackage{tabularx}
+%	表の横幅を指定できるようになる
+
+\usepackage{tikz}
+\usetikzlibrary{intersections,calc,arrows.meta,cd}
+%	複雑な図が書ける
+%\usepackage{tikz-feynman}
+%	Feynmanダイアグラムをかける
+\usepackage{tikz-cd}
+%	可換図式を書ける
+%\usepackage{gnuplot-lua-tikz}
+%	グラフを書いてくれるらしい．なにこれ
+\usepackage[dvipsnames]{xcolor}
+\usepackage{tcolorbox}
+%	いろんな枠組みが書ける
+\tcbuselibrary{most}
+%	tcolorboxのトモダチ
+
+\usepackage{framed}
+%	簡単な枠組みが書ける
+
+%\usepackage{listings,jvlisting}
+%	ソースコードが綺麗に書けるように設定できる
+
+\usepackage{hyperref}
+%	ハイパーリンクや参照などいろんなことができる
+%\usepackage{intopdf}
+%	他のPDFファイルをハイパーリンクを使って読み込む
+
+%\usepackage{csquotes}
+\usepackage{biblatex}
+\renewcommand{\bibnamedash}{%
+	\hskip.2em \leavevmode\rule[.5ex]{2.5em}{.3pt}\hskip0.4em
+	}
+%	bibtexの上位互換．UTF-8に対応したbiberを用いる．
+
+%↓パッケージをつくれるらしい．
+%↓そうでなくても\newcommandではできないコマンドが作れる．
+%\usepackage{xparse}
+%オプション因数付きコマンドを定義できる
+%\usepackage{ifthen}
+%条件分岐と反復処理
+%\usepackage{xkeyval}
+%key-value 形式によるコマンドの定義が可能
+%\usepackage{etoolbox}
+%なんかいろいろできる
+%\usepackage{calc}
+%レイアウトの演算ができる
+
+%\usepackage{bxtexlogo}
+%	TeXのロゴ
+%\usepackage{manfnt}
+%	危険な曲がり角が書ける
+%\usepackage{scsnowman}
+%	雪だるまが書ける
+%\usepackage{coffee stains}
+%	コーヒーのシミが書ける
+%\usepackage{halloweenmath}
+%	ハロウィンな数式を書ける
+%\usepackage{bearwear}
+%	テディベアのきせかえができる
+%\usepackage {tikzducks}
+%\usetikzlibrary{ducks}
+%	アヒルで遊べる
+%\usepackage{randomwalk}
+%	ランダムウォークできる

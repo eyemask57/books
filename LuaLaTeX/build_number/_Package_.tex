@@ -1,15 +1,26 @@
 \documentclass[
-%	book,
+	book,
 %	report,
 	head_space=20mm,
-	foot_space=25mm,
-%	gutter=20mm,
-	a4paper,
-	titlepage,
-	fontsize=10.5bp
+	foot_space=20mm,
+	gutter=20mm,
+	fore-edge=15mm,
+	a5paper,
+%	titlepage,
+	fontsize=8bp
 	]{jlreq}
 %基本はarticle
 %オプションに記入していく: book, report
+
+\usepackage{titleps}
+%\usepackage[times]{quotchap}
+%チャプターいじれる奴だけどうまく機能しない
+%\pagestyle{headings}
+%ノンブルの出し方
+%\usepackage{gentombow}
+%日本式トンボを出力
+%\usepackage{titleps}
+%ヘッダー
 
 %---beamer用---
 %\documentclass[unicode,12pt]{beamer}
@@ -53,8 +64,12 @@
 %\usepackage{datestamp}
 %	なんどコンパイルしても消えないタイムスタンプを残せる
 
+%\usepackage{titlesec}
+%	なんと見出しについていじれる
 %\usepackage{tocloft}
 %	目次についていじれる
+%\usepackage{picture}
+%	tikzみたいなやつ
 
 %\usepackage{makeidx}
 %\makeindex
@@ -65,7 +80,7 @@
 %\usepackage{appendix}
 %	補遺の制御を簡単にする
 
-\usepackage[number]{abstract}
+%\usepackage[number]{abstract}
 %	abstractをいじれる
 %	- オプションなし
 %	- number
@@ -81,6 +96,8 @@
 
 \usepackage{amsmath,amssymb,amsfonts,mathtools,empheq,autobreak,breqn,esint,latexsym}
 %	必須．数学の記号・ギリシャ文字などの拡張
+
+\usepackage{bussproofs}
 
 %\usepackage{amsthm}
 %	定理環境の拡張．現在はtcolorbox使用により停止中

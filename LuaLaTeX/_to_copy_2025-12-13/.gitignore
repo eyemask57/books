@@ -1,0 +1,11 @@
+*.aux
+*.bcf
+*.log
+*.ltjruby
+*.out
+*.xml
+*.gz
+*.fls
+*.fdb_latexmk
+*.blg
+*.bbl

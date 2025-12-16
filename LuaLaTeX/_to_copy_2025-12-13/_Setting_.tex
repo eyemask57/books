@@ -1,0 +1,307 @@
+\hypersetup{
+	luatex,
+	pdfencoding=auto,
+	unicode,
+	hidelinks,
+	pdfusetitle,
+	bookmarks=true,
+	bookmarksdepth=3,
+	bookmarksnumbered=true,
+	colorlinks=true,
+	linkcolor=RoyalBlue,
+	citecolor=blue,
+	urlcolor=gray,
+	pdfauthor={eyemask57}
+}
+
+\sisetup{separate-uncertainty,per-mode=symbol,detect-all,range-phrase=--}
+
+\ExecuteBibliographyOptions{
+	abbreviate=true,
+	maxnames=8,
+	minnames=3,
+	hyperref=auto,
+	backref=true,
+	abbreviate=true,
+	date=year,
+	arxiv=abs,
+	isbn=true,
+	url=true,
+	doi=true
+}
+
+\setcounter{tocdepth}{2}
+%\setcounter{section}{-1}
+%\setcounter{chapter}{-1}
+
+\newpagestyle{main}{
+	\headrule
+	\sethead[\thepage\qquad{}第\thechapter{}章\quad\chaptertitle][][]% even
+	{}{}{\thesection\quad\sectiontitle\qquad\thepage}% odd
+	\setfoot[][][]% even
+	{}{}{}% odd
+}
+
+\newpagestyle{numonly}{
+	\headrule
+	\sethead[\thepage][][]% even
+	{}{}{\thepage}% odd
+	\setfoot[][][]% even
+	{}{}{}% odd
+}
+
+\settitlemarks{chapter,section,subsection}
+
+\begin{comment}
+\setmainfont{Times-New-Roman}[BoldFont=Times-New-Roman]
+\setsansfont{Arial}
+
+\setmainjfont[
+	YokoFeatures       = {JFM=jlreq},
+	TateFeatures       = {JFM=jlreqv},
+	BoldFont           = Yu-Gothic,
+	BoldFeatures       = {FakeBold=2},
+	ItalicFont         = Yu-Mincho,
+	ItalicFeatures     = {FakeSlant=0.33},
+	BoldItalicFont     = Yu-Gothic,
+	BoldItalicFeatures = {FakeBold=2, FakeSlant=0.33}
+	]{Yu-Mincho}
+\setsansjfont[
+	YokoFeatures       = {JFM=jlreq},
+	TateFeatures       = {JFM=jlreqv},
+	BoldFont           = Yu-Gothic,
+	BoldFeatures       = {FakeBold=2},
+	ItalicFont         = Yu-Gothic,
+	ItalicFeatures     = {FakeSlant=0.33},
+	BoldItalicFont     = Yu-Gothic,
+	BoldItalicFeatures = {FakeBold=2, FakeSlant=0.33}
+	]{Yu-Gothic}
+\end{comment}
+
+\DeclareEmphSequence{\gtfamily\sffamily}
+
+\DeclareMathOperator{\sgn}{sgn}
+\DeclareMathOperator{\card}{card}
+\DeclareMathOperator{\ord}{ord}
+\DeclareMathOperator{\Aut}{Aut}
+\DeclareMathOperator{\id}{id}
+\DeclareMathOperator{\Id}{Id}
+\DeclareMathOperator{\diag}{diag}
+\DeclareMathOperator{\spanL}{span}
+\DeclareMathOperator{\kernel}{Ker}
+\DeclareMathOperator{\image}{Im}
+\DeclareMathOperator{\Imagenary}{Im}
+\DeclareMathOperator{\Real}{Re}
+\DeclareMathOperator{\Hom}{Hom}
+\DeclareMathOperator{\End}{End}
+\DeclareMathOperator{\lcm}{lcm}
+\DeclareMathOperator{\rank}{rank}
+\DeclareMathOperator{\coker}{coker}
+\DeclareMathOperator{\Coker}{Coker}
+\DeclareMathOperator{\sech}{sech}
+\DeclareMathOperator{\csch}{csch}
+\DeclareMathOperator{\arcsec}{arcsec}
+\DeclareMathOperator{\arccot}{arccot}
+\DeclareMathOperator{\arccsc}{arccsc}
+\DeclareMathOperator{\arccosh}{arccosh}
+\DeclareMathOperator{\arcsinh}{arcsinh}
+\DeclareMathOperator{\arctanh}{arctanh}
+\DeclareMathOperator{\arcsech}{arcsech}
+\DeclareMathOperator{\arccsch}{arccsch}
+\DeclareMathOperator{\arccoth}{arccoth}
+\DeclareMathOperator{\gradient}{grad}
+\DeclareMathOperator{\divergence}{div}
+\DeclareMathOperator{\rotation}{rot}
+\DeclareMathOperator{\Con}{Con}
+\DeclareMathOperator{\Cov}{Cov}
+\DeclareMathOperator{\Var}{Var}
+
+\newcommand{\notmid}{\mathrel{\ooalign{$\mkern-5mu\not$\crcr$|$}}}
+\newcommand{\R}{\mathrel{R}}
+\newcommand{\qed}{\rightline\square}
+\newcommand{\qedhere}{\quad\square}
+
+\definecolor{burgundy}{rgb}{0.5, 0.0, 0.13}
+\tcbset{mytheo/.style={
+	fonttitle=\gtfamily\sffamily\bfseries\upshape,
+	enhanced,
+	breakable,
+	colframe=burgundy,
+	colback=burgundy!2!white,
+	colbacktitle=burgundy,
+	boxrule=0pt,
+	borderline south={2pt}{-2pt}{burgundy},
+	left*=1\zw,
+	right*=1\zw,
+	theorem style=standard,
+	sharp corners,
+	before skip=8pt,
+	after skip=10pt,
+	before upper={\setlength{\parindent}{1\zw}},
+	before lower={\setlength{\parindent}{1\zw}}
+}}
+
+\newtcbtheorem[number within=subsection]{thm}{Theorem}%定理
+{mytheo}{tm}
+\newcommand{\thmref}[1]{{\bfseries\sffamily Theorem~\ref{tm:#1}}}
+
+\newtcbtheorem[use counter from=thm]{prop}{Proposition}%命題
+{mytheo}{pro}
+\newcommand{\propref}[1]{{\bfseries\sffamily Proposition~\ref{pro:#1}}}
+
+\newtcbtheorem[use counter from=thm]{cor}{Corollary}%系
+{mytheo}{co}
+\newcommand{\corref}[1]{{\bfseries\sffamily Corollary~\ref{co:#1}}}
+
+%----------------------------------------------------------------------
+
+\newtcbtheorem[use counter from=thm]{dfn}{Definition}%定義
+{mytheo,
+	colframe=blue!50!black,colback=blue!50!black!2!white,colbacktitle=blue!50!black,borderline south={2pt}{-2pt}{blue!50!black},}{de}
+\newcommand{\dfnref}[1]{{\bfseries\sffamily Definition~\ref{de:#1}}}
+
+\newtcbtheorem[use counter from=thm]{ax}{Axiom}%公理
+{mytheo,
+	colframe=teal!50!black,colback=teal!50!black!2!white,colbacktitle=teal!50!black,borderline south={2pt}{-2pt}{teal!50!black},}{axi}
+\newcommand{\axref}[1]{{\bfseries\sffamily Axiom~\ref{axi:#1}}}
+
+\newtcbtheorem[use counter from=thm]{lem}{Lemma}%補題
+{mytheo,
+	colframe=green!50!black,colback=green!50!black!2!white,colbacktitle=green!50!black,borderline south={2pt}{-2pt}{green!50!black},}{le}
+\newcommand{\lemref}[1]{{\bfseries\sffamily Lemma~\ref{le:#1}}}
+
+\newtcbtheorem[use counter from=thm]{con}{Conjection}%予想
+{mytheo,
+	colframe=magenta,colback=magenta!2!white,colbacktitle=magenta,borderline south={2pt}{-2pt}{charcoal},}{cn}
+\newcommand{\conref}[1]{{\bfseries\sffamily Conjection~\ref{cn:#1}}}
+
+%----------------------------------------------------------------------
+
+%\newcounter{myexample}
+%[usecounter=myexample,numberformat=\Alph]
+%[number within=section]
+\definecolor{charcoal}{rgb}{0.21, 0.27, 0.31}
+\newtcbtheorem[use counter from=thm]{ex}{Example}%例
+{mytheo,
+	colframe=charcoal,colback=charcoal!2!white,colbacktitle=charcoal,borderline south={2pt}{-2pt}{charcoal},}{exa}
+\newcommand{\exref}[1]{{\bfseries\sffamily Example~\ref{exa:#1}}}
+
+\newtcbtheorem[use counter from=thm]{exe}{Exercise}%例
+{mytheo,
+	colframe=charcoal,colback=charcoal!2!white,colbacktitle=charcoal,borderline south={2pt}{-2pt}{charcoal},}{exer}
+\newcommand{\exeref}[1]{{\bfseries\sffamily Exercise~\ref{exer:#1}}}
+
+\newtcbtheorem[use counter from=thm]{qu}{Question}%例
+{mytheo,
+	colframe=charcoal,colback=charcoal!2!white,colbacktitle=charcoal,borderline south={2pt}{-2pt}{charcoal},}{que}
+\newcommand{\quref}[1]{{\bfseries\sffamily Question~\ref{que:#1}}}
+
+%----------------------------------------------------------------------
+
+\newtcbtheorem[use counter from=thm]{thy}{Theory}%理論
+{mytheo,
+	colframe=yellow!50!black,colback=yellow!50!black!2!white,colbacktitle=yellow!50!black,borderline south={2pt}{-2pt}{yellow!50!black},}{ty}
+\newcommand{\thyref}[1]{{\bfseries\sffamily Theory~\ref{ty:#1}}}
+
+\newtcbtheorem[use counter from=thm]{pr}{Principle}%性質，原理
+{mytheo,
+	colframe=yellow!50!black,colback=yellow!50!black!2!white,colbacktitle=yellow!50!black,borderline south={2pt}{-2pt}{yellow!50!black},}{pri}
+\newcommand{\prref}[1]{{\bfseries\sffamily Principle~\ref{pri:#1}}}
+
+\newtcbtheorem[use counter from=thm]{req}{Requestment}%要請
+{mytheo,
+	colframe=yellow!50!black,colback=yellow!50!black!2!white,colbacktitle=yellow!50!black,borderline south={2pt}{-2pt}{yellow!50!black},}{rq}
+\newcommand{\reqref}[1]{{\bfseries\sffamily Requestment~\ref{rq:#1}}}
+
+\newtcbtheorem[use counter from=thm]{law}{Law}%法則
+{mytheo,
+	colframe=yellow!50!black,colback=yellow!50!black!2!white,colbacktitle=yellow!50!black,borderline south={2pt}{-2pt}{yellow!50!black},}{la}
+\newcommand{\lawref}[1]{{\bfseries\sffamily Law~\ref{la:#1}}}
+
+%----------------------------------------------------------------------
+
+\newtcbtheorem[use counter from=thm]{expt}{Experiment}%実験
+{mytheo,
+	colframe=violet!50!black,colback=violet!50!black!2!white,colbacktitle=violet!50!black,borderline south={2pt}{-2pt}{violet!50!black},}{xp}
+\newcommand{\exptref}[1]{{\bfseries\sffamily Experiment~\ref{xp:#1}}}
+
+\newtcbtheorem[use counter from=thm]{res}{Resalt}%結果
+{mytheo,
+	colframe=purple!50!black,colback=purple!50!black!2!white,colbacktitle=purple!50!black,borderline south={2pt}{-2pt}{purple!50!black},}{rs}
+\newcommand{\resref}[1]{{\bfseries\sffamily Resalt~\ref{rs:#1}}}
+
+%\newtcbtheorem[use counter from=thm]{}{}%
+%{mytheo}{}
+%\newcommand{\_ref}[1]{{\bfseries\sffamily ~\ref{:#1}}}
+
+%? ボックステンプレ tatebou
+\tcbset{
+	myproof/.style={
+%		invisible,
+%		ignore,
+		breakable,
+		detach title,
+		fonttitle=\gtfamily\sffamily\bfseries\upshape,
+		coltitle=black,
+		blanker,
+		empty,
+		left=3mm,
+		right=3mm,
+		top=1mm,
+		bottom=1mm,
+		before skip=6pt,after skip=6pt, %ボックス上下の余白
+		separator sign={\ }, %命題番号の後ろの記号
+		description delimiters={(}{)\ }, %タイトルをどういう記号で囲むか
+		after title={\ :\par}, %タイトルの後ろの記号
+		before upper={\tcbtitle \setlength{\parindent}{1\zw}},%本文開始前につける記号など
+		borderline vertical={0.8pt}{0pt}{
+			black,
+			dotted,
+%			arrows={Square[scale=0.5]-Square[scale=0.5]}
+		},
+		after upper=\hfill\square%ボックス末尾につける記号
+	}
+}
+
+\newtcolorbox{proof}{myproof,title=Proof}
+\newtcolorbox{pf}{myproof,title=Pf}
+\newtcolorbox{answer}{myproof,title=Answer}
+\newtcolorbox{ans}{myproof,title=Ans}
+
+\begin{comment}
+\newtcolorbox{answer}{
+%	invisible,
+%	ignore,
+%	breakable,
+	tatebou,
+	blanker,
+	empty,
+	title=Answer,
+	left=3mm,
+	right=3mm,
+	top=1mm,
+	bottom=1mm,
+	borderline vertical={0.8pt}{0pt}{
+		black,
+		dotted,
+%		arrows={Square[scale=0.5]-Square[scale=0.5]}
+		},
+	after upper=\hfill\square%ボックス末尾につける記号
+}
+\end{comment}
+
+\newtcolorbox{remark}[1][]{
+	% invisible,
+	% ignore,
+	enhanced,
+	before skip=2mm,after skip=3mm,fontupper=\gtfamily\sffamily,
+	boxrule=0.4pt,left=5mm,right=2mm,top=1mm,bottom=1mm,
+	colback=yellow!50,
+	colframe=yellow!20!black,
+	sharp corners,rounded corners=southeast,arc is angular,arc=3mm,
+	underlay={%
+		\path[fill=tcbcolback!80!black] ([yshift=3mm]interior.south east)--++(-0.4,-0.1)--++(0.1,-0.2);
+		\path[draw=tcbcolframe,shorten <=-0.05mm,shorten >=-0.05mm] ([yshift=3mm]interior.south east)--++(-0.4,-0.1)--++(0.1,-0.2);
+		\path[fill=yellow!50!black,draw=none] (interior.south west) rectangle node[white]{\Huge\bfseries !} ([xshift=4mm]interior.north west);
+	},
+	drop fuzzy shadow,#1}
