@@ -1,0 +1,263 @@
+\chapter{素朴集合論}
+
+きちんとした集合論のために，まずは感覚を掴んでいくところから始める．
+本章では通常数学で用いられる集合論を扱えるようにする．
+
+\setcounter{section}{-1}
+\section{モチベーション}
+
+\subsection{素朴集合論とは}
+
+普段数学を扱うにあたっての基礎の基礎．
+数学の言語としての側面．
+便利な道具の導入．
+きちんとした議論をするための土台としての機能．
+
+\subsection{扱う内容}
+集合と元，集合の演算，写像，順序関係，同値関係，濃度，選択公理
+
+\section{集合}
+\begin{dfn}{集合}{set}
+	\index{set}\index{しゅうごう@集合}\emph{集合(set)}とは，数学的対象などの``ものの集まり''のことである．
+	ただし，集められるものが明確に定まる必要がある．
+\end{dfn}
+
+\begin{dfn}{元}{element}
+	集合$A$を構成する1つ1つのものを\index{element}\index{げん@元}\emph{元(element)}といい，
+	$a$が$A$の元であることを$a \in A$と書く．
+
+	またこのとき，$a$が$A$に\emph{含まれる}または\emph{属する}，$A$は$a$を\emph{含む}などという．
+
+	$a \in A$でないとき，$a \notin A$と書く．
+\end{dfn}
+
+人によってはこの曖昧さに耐えられないかもしれないが，
+集合をきちんと議論しようとすると\emph{公理的集合論}まで踏み込まなければいけない．
+それらは\emph{第\ref{ax-set-theory}章}で論じるため，今は成り立つとして見なかったことにする．
+
+\begin{ex}{数全体の集合}{num-set}
+	数学によく現れる数全体の集合を定義する．
+	\begin{description}
+		\item \quad $\mathbb{N}$：自然数全体の集合
+		\item \quad $\mathbb{Z}$：整数全体の集合
+		\item \quad $\mathbb{Q}$：有理数全体の集合
+		\item \quad $\mathbb{R}$：実数全体の集合
+		\item \quad $\mathbb{C}$：複素数全体の集合
+		\item \quad $\mathbb{H}$：四元数全体の集合
+	\end{description}
+\end{ex}
+
+集合同士がなにをもって等しいとするかという関係を
+\index{equivalence relation}\index{そうとうかんけい@相当関係}
+\emph{相当関係(equivalence relation)}といい，以下のように定義する．
+
+\index{axiom of extensionality}\index{がいえんせいのこうり@外延性の公理}
+\begin{ax}{外延性の公理(axiom of extensionality)}{axiom-of-extensionality}
+	$A,B$を集合とする．
+
+	$A$の任意の元も$B$に含まれ，また$B$の任意の元も$A$に含まれるとき，
+	$A = B$と書き，$A$と$B$は\emph{等しい}という．
+	$A = B$でないとき，$A \neq B$と書く．
+\end{ax}
+
+\subsection{集合の記法}
+
+ある集合について，何がその集合に含まれているのかを確定させたい．
+最も簡単な方法は，構成するすべての要素を全て列挙すればいい．
+
+\begin{dfn}{外延的記法}{ex-notation}
+	構成するすべての元を，中括弧$\set{}$の中に列挙する記法のことを
+	\index{extensive notation}\index{がいえんてききほう@外延的記法}\emph{外延的記法(extensive notation)}
+	という．
+
+	なお，書き並べる順序は変えてもよく，同じ元を複数回書き並べてもよい．
+\end{dfn}
+\begin{ex}{複数の元}{}
+	$a$と$b$と$c$からなる集合は外延的記法を用いて
+	\[
+	\set{a,b,c} = \set{a,a,a,b,c} = \set{c,c,a,a,b,b}
+	\]
+	と書くことができる．
+\end{ex}
+\begin{ex}{外延的記法の省略}{}
+	$\mathbb{N}$は全ての元を書くことはできないが，
+	読み手に適切に推察できるように省略することがある．
+
+	例えば，$\mathbb{N}$は以下のように書くことがある．
+	\[
+	\set{1,2,3,\ldots}
+	\]
+\end{ex}
+
+外延的記法のデメリットとしては，
+数百個の元があった場合に書くのがとてもめんどくさくなること，
+省略は読み手によって誤解が生じる可能性などがある．
+
+別の表記方法として，その集合の元が満たす条件を書き記すことによって，
+逆にその条件を満たす対象だけをすべてを集めてくると考えることができる．
+
+\begin{dfn}{内包的記法}{set-builder-notation}
+	条件$P(x)$があったとき，その条件を満たす対象$x$のみをすべて集めた集合を表す記法を
+	\index{set-builder notation}\index{ないほうてききほう@内包的記法}\emph{内包的記法}
+	といい，以下のように書く．
+	\[
+	\set{x|P(x)}
+	\]
+\end{dfn}
+
+\begin{ex}{内包的記法の省略}{}
+	正の実数全体の集合を内包的記法を用いて表すと，
+	\[
+	\set{x \in \mathbb{R} | x > 0}
+	\]
+	となる．厳密には内包的記法ではないが，よく用いる省略記法として，
+	\[\set{x \in X | P(x)} \coloneqq \set{x | x \in X , P(x)}\]
+	というものがある．ただし，$X$は集合，$P(x)$は条件を示す．
+\end{ex}
+
+\subsection{部分集合}
+
+ある集合の元を全て含むような集合について，そのことが一目でわかる記号が欲しい．
+この関係を\index{inclusion relation}\index{ほうがんかんけい@包含関係}\emph{包含関係}といい，
+以下のように定義する．
+
+\begin{dfn}{部分集合}{subset}
+	$A,B$を集合とする．
+
+	$A$の任意の元も$B$に含まれるとき，$A \subset B$と書く．
+	またこのとき，$A$は$B$の
+	\index{subset}\index{ぶぶんしゅうごう@部分集合}\emph{部分集合(subset)}，
+	$A$は$B$に\emph{包まれる}，$B$は$A$を\emph{包む}という．
+
+	また，$A \subset B$かつ$A \neq B$であるとき，
+	$A$は$B$の
+	\index{proper subset}\index{しんぶぶんしゅうごう@真部分集合}\emph{真部分集合(proper　subset)}
+	といい，$A \subsetneq B$と書く．
+\end{dfn}
+
+包含関係$\subset$は次の性質を示す．
+
+\begin{prop}{部分集合}{subset}
+	$A,B,C$を集合とすると，次の命題が成り立つ．
+	\begin{enumerate}
+		\item $A \subset A$
+		\item $A \subset B , B \subset A \implies A = B$
+		\item $A \subset B , B \subset C \implies A \subset C$
+	\end{enumerate}
+\end{prop}
+
+\begin{proof}
+	\begin{enumerate}
+		\item
+		任意の命題$P$について $P \implies P$は真である．
+		$x \in A \implies x \in A$は任意の$x$について真であるので，$A \subset A$．
+
+		\item
+		\begin{align*}
+			&A \subset B \iff \forall x (x \in A \implies x \in B)\\
+			&B \subset A \iff \forall x (x \in B \implies x \in A)
+		\end{align*}
+		よって，$\forall x (x \in B \iff x \in A)$．
+		\axref{axiom-of-extensionality}より，$A = B$である．
+
+		\item
+		\begin{align*}
+			&A \subset B \iff \forall x (x \in A \implies x \in B)\\
+			&B \subset C \iff \forall x (x \in B \implies x \in C)
+		\end{align*}
+		よって，$\forall x (x \in A \implies x \in C) \iff A \subset C$である．
+	\end{enumerate}
+\end{proof}
+
+\subsection{空集合}
+
+すぐ導入できる重要な集合として\emph{空集合}というものがある．
+
+内包的記法においては，偽の命題$P(x)$を満たす$x$は存在しないため，条件に偽の命題を入れればそれは全て空集合である．
+
+\begin{dfn}{空集合}{empty-set}
+	元を一つも含まない集合
+	$\varnothing \coloneqq \set{} = \set{x | x\neq x}$
+	のことを
+	\index{empty set}\index{くうしゅうごう@空集合}\emph{空集合(empty set)}
+	という．
+\end{dfn}
+
+\begin{prop}{}{empty-subset}
+	任意の集合$A$について，$\varnothing \subset A$が成り立つ
+\end{prop}
+\begin{proof}
+	\[\varnothing \subset A \iff \forall x (x \in \varnothing \implies x \in A)\]
+	であるが，任意の$x$について$x \notin \varnothing$であるので，
+	$x \in \varnothing \implies x \in A$の前提が常に偽である．
+	よって$x \in \varnothing \implies x \in A$は任意の$x$について常に真である．
+\end{proof}
+\begin{thm}{空集合の一意性}{empty-uniqueness}
+	空集合はただ一つ存在する．
+\end{thm}
+\begin{proof}
+	$\varnothing , \varnothing'$をどちらも空集合とする．
+
+	\propref{empty-subset}より，$\varnothing \subset \varnothing', \varnothing' \subset \varnothing$である．
+
+	よって，\propref{subset}(2)より$\varnothing = \varnothing'$である．
+\end{proof}
+
+\subsection{演算}
+
+\begin{dfn}{集合の演算}{set-operation}
+	$A,B$を集合とする．
+
+	このとき，集合$A \cup B , A \cap B , A \setminus B$を次のように定義する．
+	\begin{align*}
+		A \cup B &\coloneqq \set{x | x \in A \lor x \in B}\\
+		A \cap B &\coloneqq \set{x | x \in A \land x \in B}\\
+		A \setminus B &\coloneqq \set{x | x \in A \land x \notin B}
+	\end{align*}
+	また，それぞれを$A,B$の
+	\index{union}\index{わしゅうごう@和集合}\emph{和集合(union)}，
+	\index{intersection}\index{きょうつうぶぶん@共通部分}\emph{共通部分(intersection)}，
+	\index{set difference}\index{さしゅうごう@差集合}\emph{差集合(set difference)}という．
+\end{dfn}
+\begin{prop}{演算の性質}{set-op-property}
+	$A$,$B$を集合とするとき，次の命題が成り立つ．
+	\begin{enumerate}
+		\item $A \cup B = B \cup A$
+		\item $A \cap B = B \cap A$
+		\item $(A \cup B) \cup C = A \cup (B \cup C)$
+		\item $(A \cap B) \cap C = A \cap (B \cap C)$
+		\item $A \cup (B \cap C) = (A \cup B) \cap (A \cup C)$
+		\item $A \cap (B \cup C) = (A \cap B) \cup (A \cap C)$
+	\end{enumerate}
+\end{prop}
+\begin{proof}
+	(1)--(4)は省略する．
+	\begin{enumerate}[start=5]
+		\item
+	\end{enumerate}
+\end{proof}
+\begin{dfn}{互いに素}{disjoint-sets}
+	集合$A,B$について，$A \cap B = \varnothing$であるとき，
+	$A,B$は\index{disjoint sets}\index{たがいにそ@互いに素}\emph{互いに素(disjoint sets)}であるという．
+\end{dfn}
+
+\begin{dfn}{直和}{disjoint union}
+	集合$A,B$が互いに素であるとき，
+	和集合$A \cup B$を$A,B$の\index{disjoint union}\index{ちょくわ@直和}\emph{直和}といい，
+	$A \sqcup B$という．
+\end{dfn}
+
+\begin{dfn}{普遍集合}{universal-set}
+	数学の議論において，その議論における任意の集合がある集合$X$の部分集合であるとき，その定まった集合$X$のことを
+	\index{domein of discourse}\index{ぎろんりょういき@議論領域}\emph{議論領域(domein of discourse)}または
+	その議論における
+	\index{universal　set}\index{ふへんしゅうごう@普遍集合}
+	\emph{普遍集合(universal set)}または\index{ぜんたいしゅうごう@全体集合}\emph{全体集合}という．
+\end{dfn}
+\begin{dfn}{補集合}{complement}
+	普遍集合$X$が与えられているとき，集合$A$の$X$に対する差集合$X \setminus A$を単に
+	$A$の\index{complement}\index{ほしゅうごう@補集合}\emph{補集合(complement)}といい，$A^\complement$と書く．
+\end{dfn}
+\begin{remark}
+	引継ぎ：\propref{set-op-property}(5)から（正直そんなにいらん気もするけど）
+\end{remark}

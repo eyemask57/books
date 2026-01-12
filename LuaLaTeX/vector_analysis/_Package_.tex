@@ -2,25 +2,27 @@
 	book,
 %	report,
 	head_space=20mm,
-	foot_space=20mm,
+	foot_space=15mm,
 	gutter=20mm,
 	fore-edge=15mm,
 	b5paper,
 %	titlepage,
-	fontsize=8bp
+	fontsize=11bp
 	]{jlreq}
 %基本はarticle
 %オプションに記入していく: book, report
 
 \usepackage{titleps}
+%ヘッダー
 %\usepackage[times]{quotchap}
 %チャプターいじれる奴だけどうまく機能しない
 %\pagestyle{headings}
 %ノンブルの出し方
 %\usepackage{gentombow}
 %日本式トンボを出力
-%\usepackage{titleps}
-%ヘッダー
+%\usepackage{fancybox}
+%変なハコ
+\usepackage[absolute]{textpos}
 
 %---beamer用---
 %\documentclass[unicode,12pt]{beamer}
@@ -71,8 +73,8 @@
 %\usepackage{picture}
 %	tikzみたいなやつ
 
-%\usepackage{makeidx}
-%\makeindex
+\usepackage{makeidx}
+\makeindex
 %	索引の作成
 %	\index{よみ@索引項目}(和文)
 %	\index{索引項目}(英文)
@@ -125,7 +127,6 @@
 %	物理でよく用いる記号の拡張
 %	physics packageは問題点が多すぎるため使用は非推奨
 \usepackage{derivative}
-\usepackage{}
 %\usepackage{askmaps}
 %	カルノー図を描く
 %\usepackage{mhchem}

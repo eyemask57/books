@@ -1,0 +1,512 @@
+\chapter{ベクトル空間}
+
+\section{基礎}
+
+\begin{dfn}{ベクトル空間の公理}{vector-space}
+集合$V$，体$F$，$\bm{x},\bm{y},\bm{z} \in V$，$a,b \in F$とする．
+
+加法${+}:V \times V \to V$，スカラー倍${*} : F \times V \to V $について次の性質を満たすとき，
+組$(V,{+},{*})$は$F$上の
+\index{vector space}\index{べくとるくうかん@ベクトル空間}\emph{ベクトル空間(vector space)}
+または
+\index{linear space}\index{せんけいくうかん@線形空間}\emph{線形空間(linear space)}
+という．
+$V$の元を
+\index{vector}\index{べくとる@ベクトル}\emph{ベクトル(vector)}といい，
+$F$の元を
+\index{scalar}\index{すからー@スカラー}\emph{スカラー(scalar)}という．
+\begin{enumerate}
+	\item $\bm{x} + \bm{y} = \bm{y} + \bm{x}$
+	\item $(\bm{x} + \bm{y}) + \bm{z} = \bm{x} + (\bm{y} + \bm{z})$
+	\item ある元$\bm{0} \in V$が存在し，$\bm{0} + \bm{x} = \bm{x}$となる．
+	\item 任意の$\bm{x}$に対して，ある元$\bm{x}'$が存在し，$\bm{x} + \bm{x}' = \bm{x}' + \bm{x} = \bm{0}$となる．$\bm{x}'$のことを$\bm{x}$の\index{inverse element}\index{ぎゃくげん@逆元}\emph{逆元(inverse element)}という．
+	\item $a(\bm{x} + \bm{y}) = a\bm{x} + a\bm{y}$
+	\item $(a + b) \bm{x} = a\bm{x} + b\bm{y}$
+	\item $a(b\bm{x})=(ab)\bm{x}$
+	\item $F$の単位元$1 \in F$について，$1\bm{x} = \bm{x}$となる．
+\end{enumerate}
+\end{dfn}
+
+今回は$V = \mathbb{R}^n , F = \mathbb{R}$，特に$n = 2,3$の場合を扱う．
+また，表記を省略して，単に$\mathbb{R}^n$がベクトル空間であると書くことがある．
+
+ベクトル$\bm{x} \in \mathbb{R}^n$について，
+各成分を明示して記述する方法をベクトルの$\bm{x}$の\emph{成分表示(component representation)}という．
+$x_i \in \mathbb{R}\ (i = 1,\ldots,n)$を用いて，
+\[
+\bm{x} = (x_1,\ldots,x_n)=
+\begin{pmatrix}
+	x_1\\
+	\vdots\\
+	x_n
+\end{pmatrix}
+\]
+と書く．$n \times 1$行列として同一視することもある．
+
+$\bm{x},\bm{y} \in \mathbb{R}^n$とその成分表示$x_i,y_i \in \mathbb{R}\ (i = 1,\ldots,n)$
+および$a \in \mathbb{R}$について，次のように演算を定義すれば$\mathbb{R}^n$は$\mathbb{R}$上のベクトル空間となる．
+
+\[
+\bm{x}+\bm{y}\coloneqq\begin{pmatrix}
+	x_1 + y_1\\
+	\vdots\\
+	x_n + y_n
+\end{pmatrix}\quad,\qquad
+a\bm{x}\coloneqq
+\begin{pmatrix}
+	ax_1\\
+	\vdots\\
+	ax_n
+\end{pmatrix}
+\]
+
+\begin{dfn}{ゼロベクトル}{zero-vector}
+	全ての成分が$0$であるベクトルのことを
+	\index{zero vector}\index{ぜろべくとる@ゼロベクトル}\emph{ゼロベクトル(zero vector)}といい，
+	$\bm{0}\coloneqq(0,\ldots,0) \in \mathbb{R}^n$と表す．
+\end{dfn}
+
+\begin{dfn}{数ベクトルの相等}{equiv-vector}
+	$\bm{a},\bm{b}\in\mathbb{R}^n$とする．
+	2つのベクトル$\bm{a}=(a_1,\ldots,a_n),\bm{b}=(b_1,\ldots,b_n)$が等しいとは，
+	\[
+	a_i = b_i \quad (i = 1,\ldots,n)
+	\]
+	が成り立つことをいう．
+\end{dfn}
+
+\begin{dfn}{線形結合}{linear-combination}
+	$\bm{v}_1,\ldots,\bm{v}_r \in \mathbb{R}^n, k_1,\ldots,k_r \in \mathbb{R}\ (r \in \mathbb{N})$
+	について，
+	\[
+	\bm{v} = k_1\bm{v}_1 + \cdots + k_r\bm{v}_r
+	\]
+	となるベクトル$\bm{v} \in \mathbb{R}^n$のことを，$\bm{v}_1,\ldots,\bm{v}_r$の
+	\index{linear combination}\index{せんけいけつごう@線形結合}
+	\emph{線形結合(linear combination)}
+	または
+	\index{いちじけつごう@一次結合}\emph{一次結合}
+	という．
+\end{dfn}
+
+\begin{dfn}{線形独立・線形従属}{linearly-independent}
+	$\bm{v}_1,\ldots,\bm{v}_r \in \mathbb{R}^n$とする．
+	任意の$k_1,\ldots,k_r \in \mathbb{R}\ (r \in \mathbb{N})$について，
+	\[
+	k_1\bm{v}_1 + \cdots + k_r\bm{v}_r = \bm{0}
+	\implies
+	k_1 = \cdots = k_r = 0
+	\]
+	がなりたつとき，$\bm{v}_1,\ldots,\bm{v}_r$は
+	\index{linearly independent}\index{せんけいどくりつ@線形独立}
+	\emph{線形独立(linearly independent)}または\index{いちじどくりつ@一次独立}\emph{一次独立}であるという．
+
+	$\bm{v}_1,\ldots,\bm{v}_r$が一次独立でないとき，
+	$\bm{v}_1,\ldots,\bm{v}_r$は\index{linearly dependent}\index{せんけいじゅうぞく@線形従属}
+	\emph{線形従属(linearly dependent)}
+	または\index{いちじじゅうぞく@一次従属}\emph{一次従属}という．
+\end{dfn}
+
+\section{演算}
+
+\begin{dfn}{標準内積}{inner-product}
+	$\bm{a},\bm{b}\in\mathbb{R}^n,\bm{a}=(a_1,\ldots,a_n),\bm{b}=(b_1,\ldots,b_n)$とする．
+	\[
+	\braket{\bm{a},\bm{b}} \coloneqq \bm{a}^{\mathsf{T}}\bm{b} = a_1 b_1 + \cdots + a_n b_n= \sum_{i=1}^{n}a_i b_i
+	\]
+	となる演算$\braket{{-},{-}}:\mathbb{R}^n\times\mathbb{R}^n\to\mathbb{R}$を
+	\index{canonical inner product}\index{ひょうじゅんないせき@標準内積}
+	\emph{標準内積(canonical inner product)}または単に\emph{内積}という．
+	ただし，$\bm{a}^{\mathsf{T}}$は$\bm{a}$を$n\times{}1$行列とみなしたときの転置行列で，$1\times{}n$行列である．
+	$\bm{a},\bm{b}$の標準内積は$\bm{a} \cdot \bm{b}$と書くこともある．
+\end{dfn}
+
+\begin{prop}{標準内積の性質}{inner-product}
+	$\bm{x},\bm{y},\bm{z}\in\mathbb{R}^n,c\in\mathbb{R}$とする．
+	このとき，次の性質が成り立つ．
+	\begin{enumerate}
+		\item $\braket{\bm{x},\bm{y}} = \braket{\bm{y},\bm{x}}$\quad(対称性)
+		\item $\braket{\bm{x}+\bm{y},\bm{z}} = \braket{\bm{x},\bm{z}} + \braket{\bm{y},\bm{z}}$\quad(線形性)
+		\item $\braket{c\bm{x},\bm{y}} = c\braket{\bm{x},\bm{y}}$\quad(線形性)
+		\item $\braket{\bm{x},\bm{x}} \geq 0$\quad(正値性)
+		\item $\braket{\bm{x},\bm{x}} = 0 \iff \bm{x} = \bm{0}$
+	\end{enumerate}
+\end{prop}
+
+\begin{proof}
+	\begin{enumerate}
+		\item
+			$
+				\braket{\bm{x},\bm{y}}
+				= x_1 y_1 + \cdots + x_n y_n
+				= y_1 x_1 + \cdots + y_n x_n
+				= \braket{\bm{y},\bm{x}}
+			$
+		\item
+			$\braket{\bm{x}+\bm{y},\bm{z}}
+			= (x_1 + y_1) z_1 + \cdots + (x_n + y_n) z_n$\\
+			$= x_1 z_1 + \cdots + x_n z_n + y_1 z_1 + \cdots + y_n z_n
+				= \braket{\bm{x},\bm{z}} + \braket{\bm{y},\bm{z}}$
+		\item
+			$
+				\braket{c\bm{x},\bm{y}}
+				= (cx_1) y_1 + \cdots + (cx_n) y_n
+				= c(x_1 y_1 + \cdots + x_n y_n)
+				= c\braket{\bm{y},\bm{x}}
+			$
+		\item
+			${x_i}^2 \geq 0 \ (i = 1,\ldots,n)$より$\displaystyle\sum_{i=1}^{n}{x_i}^2 \geq 0$
+		\item
+			$\displaystyle\sum_{i=1}^{n}{x_i}^2 = 0,{x_i}^2 \geq 0\ (i = 1,\ldots,n)$
+			より${x_i}^2 = 0$，よって$x_i = 0$
+	\end{enumerate}
+\end{proof}
+
+\begin{dfn}{直交・平行}{orthogonal-parallel}
+	$\bm{x},\bm{y} \in \mathbb{R}^n$とする．
+
+	$\braket{\bm{x},\bm{y}}=0$であるとき，$\bm{x}$と$\bm{y}$は
+	\index{orthogonal}\index{ちょっこう@直交}
+	\emph{直交(orthogonal)}しているといい，
+	$\bm{x}\perp\bm{y}$と書く．
+
+	$\bm{x} = k\bm{y}\　(k \neq 0)$となるスカラー$k\in\mathbb{R}$が存在するとき，
+	$\bm{x}$と$\bm{y}$は
+	\index{parallel}\index{へいこう@平行}
+	\emph{平行(parallel)}であるといい，
+	$\bm{x}/\!/\bm{y}$と書く．
+\end{dfn}
+
+\begin{dfn}{Euclidノルム}{Euclidean-norm}
+	$\bm{a}\in\mathbb{R}^n,\bm{a}=(a_1,\ldots,a_n)$とする．
+	\[
+	\|{\bm{a}}\| \coloneqq \sqrt{\braket{\bm{a},\bm{a}}}
+	= \sqrt{{a_1}^2 + \cdots + {a_n}^2}
+	= \sqrt{\sum_{i=1}^{n}{a_i}^2}
+	\]
+	となる演算$\|{-}\|:\mathbb{R}^n\to\mathbb{R}$を
+	\index{Euclidean norm}\index{ゆーくりっどのるむ@Euclidノルム}
+	\emph{Euclidノルム(Euclidean norm)}または単に\emph{ノルム}という．
+	$\|{\bm{a}}\|$を$\bm{a}$の\emph{大きさ}という．
+\end{dfn}
+
+\begin{prop}{Euclidノルムの性質}{Euclidean-norm}
+	$\bm{x},\bm{y},\in \mathbb{R}^n,c \in \mathbb{R}$とする．
+	このとき，次の性質が成り立つ．
+	\begin{enumerate}
+		\item $\|\bm{x}\| \geq 0$
+		\item $\|\bm{x}\| = 0 \iff \bm{x} = 0$
+		\item $\|c\bm{x}\| = |c| \|\bm{x}\|$
+	\end{enumerate}
+\end{prop}
+
+\begin{proof}
+	(1),(2)は\propref{inner-product}(4),(5)より自明なので省略．
+	\begin{enumerate}[start=3]
+		\item $\displaystyle\|c\bm{x}\|
+		= \sqrt{(cx_1)^2 + \cdots + (cx_n)^2}
+		= \sqrt{c^2({x_1}^2 + \cdots + {x_n}^2)}
+		= |c| \|\bm{x}\|
+		$
+	\end{enumerate}
+\end{proof}
+
+\begin{dfn}{単位ベクトル}{unit-vector}
+	$\|\bm{e}\|=1$を満たすベクトル$\bm{e}\in\mathbb{R}^n$のことを
+	\index{unit vector}\index{たんいべくとる@単位ベクトル}
+	\emph{単位ベクトル(unit vector)}という．
+
+	また，第$i$成分のみが$1$であり，その他の成分が$0$であるような
+	ベクトル$\bm{e}_i \in \mathbb{R}^n\ (i=1,\ldots,n)$のことを
+	\index{unit basic vector}\index{きほんたんいべくとる@基本単位ベクトル}
+	\emph{基本単位ベクトル(unit basic vector)}という．
+\end{dfn}
+
+$\mathbb{R}^2$のとき，$x$軸，$y$軸の方向を向いた基本単位ベクトルをそれぞれ次のように書く．
+\[
+\bm{e}_x =
+\bm{e}_1 =
+\begin{pmatrix}
+	1\\0
+\end{pmatrix}
+\quad,\quad
+\bm{e}_y =
+\bm{e}_2 =
+\begin{pmatrix}
+	0\\1
+\end{pmatrix}
+\]
+
+$\mathbb{R}^3$のとき，$x$軸，$y$軸，$z$軸の方向を向いた基本単位ベクトルをそれぞれ次のように書く．
+\[
+	\bm{e}_x =
+	\bm{e}_1 =
+	\begin{pmatrix}
+		1\\0\\0
+	\end{pmatrix}
+	\quad,\quad
+	\bm{e}_y =
+	\bm{e}_2 =
+	\begin{pmatrix}
+		0\\1\\0
+	\end{pmatrix}
+	\quad,\quad
+	\bm{e}_z =
+	\bm{e}_3 =
+	\begin{pmatrix}
+	0\\0\\1
+	\end{pmatrix}
+\]
+
+\begin{dfn}{ベクトルのなす角}{vector-angle}
+	$\bm{a},\bm{b} \in \mathbb{R}^n$とする．
+	\[\theta = \arccos \frac{\braket{\bm{a},\bm{b}}}{\|\bm{a}\|\|\bm{b}\|}\]
+	を満たす$\theta \in \mathbb{R}\ (0\leq \theta \pi)$のことを$\bm{a}$と$\bm{b}$の
+	\index{angle}\index{なすかく@なす角}
+	\emph{なす角(angle)}という．
+	また，
+	\begin{align*}
+		&\cos \theta = \frac{\braket{\bm{a},\bm{b}}}{\|\bm{a}\|\|\bm{b}\|}\\
+		&\sin \theta = \sqrt{1 - (\cos \theta)^2}
+		= \sqrt{1 - \left(\frac{\braket{\bm{a},\bm{b}}}{\|\bm{a}\|\|\bm{b}\|}\right)^2}
+	\end{align*}である．
+\end{dfn}
+
+\begin{prop}{Cauchy--Schwarzの不等式}{Cauchy--Schwarz-inequality}
+	$\bm{x},\bm{y},\in \mathbb{R}^n$とする．このとき，
+	\[|\braket{\bm{x},\bm{y}}| \leq \|\bm{x}\|\|\bm{y}\|\]
+	が成り立つ．この不等式のことを
+	\index{Cauchy--Schwarz inequality}\index{こーしーしゅわるつのふとうしき@Cauchy--Schwarzの不等式}
+	\emph{Cauchy--Schwarzの不等式(Cauchy--Schwarz inequality)}という．
+\end{prop}
+
+\begin{proof}
+	$t \in \mathbb{R}$とする．\propref{inner-product}(4),(5)より
+	\[
+		0 \leq \braket{\bm{x} + t\bm{y},\bm{x} + t\bm{y}}
+		= \braket{\bm{x},\bm{x}} + 2t\braket{\bm{x},\bm{y}} + t^2\braket{\bm{y},\bm{y}}
+	\]
+
+	上記の二次方程式は重解または虚数解をもつ．よって，2次方程式の判別式$D \leq 0$より，
+	\[
+		0 \geq \frac{D}{4} = \braket{\bm{x},\bm{y}}^2 - \braket{\bm{x},\bm{x}}\braket{\bm{y},\bm{y}}
+	\]
+
+	よって$\braket{\bm{x},\bm{y}}^2 \leq \braket{\bm{x},\bm{x}}\braket{\bm{y},\bm{y}}$．
+
+	$\braket{\bm{x},\bm{y}}^2 = |\braket{\bm{x},\bm{y}}|^2$
+	より\[\displaystyle\sqrt{\braket{\bm{x},\bm{y}}^2}\leq \sqrt{\braket{\bm{x},\bm{x}}}\sqrt{\braket{\bm{y},\bm{y}}}\iff|\braket{\bm{x},\bm{y}}| \leq \|\bm{x}\|\|\bm{y}\|\]
+\end{proof}
+
+\begin{prop}{三角不等式}{triangle-inequality}
+	$\bm{x},\bm{y},\in \mathbb{R}^n$とする．このとき，
+	\[\|\bm{x} + \bm{y}\| \leq \|\bm{x}\|+\|\bm{y}\|\]
+	が成り立つ．この不等式のことを
+	\index{triangle inequality}\index{さんかくふとうしき@三角不等式}
+	\emph{三角不等式(triangle inequality)}という．
+\end{prop}
+
+\begin{proof}
+	両辺を2乗して，左辺から右辺を引く．
+	\begin{align*}
+		&(\|\bm{x}\| + \|\bm{y}\|)^2 - \|\bm{x} + \bm{y}\|^2\\
+		&= \|\bm{x}\|^2 + 2\|\bm{x}\|\|\bm{y}\| + \|\bm{y}\|^2 - \braket{\bm{x}+\bm{y},\bm{x}+\bm{y}}\\
+		&= \braket{\bm{x},\bm{x}} + 2\|\bm{x}\|\|\bm{y}\| + \braket{\bm{y},\bm{y}}
+			- 2\braket{\bm{x},\bm{y}} - \braket{\bm{x},\bm{x}} - \braket{\bm{y},\bm{y}}\\
+		&= 2\|\bm{x}\|\|\bm{y}\| - 2\braket{\bm{x},\bm{y}}
+	\end{align*}
+
+	Cauchy--Schwarzの不等式より，$2(\|\bm{x}\|\|\bm{y}\| - \braket{\bm{x},\bm{y}}) \geq 0$．
+
+	よって，$(\|\bm{x}\| + \|\bm{y}\|)^2 \geq \|\bm{x} + \bm{y}\|^2
+		\iff \|\bm{x}\| + \|\bm{y}\| \geq \|\bm{x} + \bm{y}\|$．
+\end{proof}
+
+\begin{dfn}{Euclid距離}{Euclidean-distance}
+	$\bm{a},\bm{b}\in\mathbb{R}^n,\bm{a}=(a_1,\ldots,a_n),\bm{b}=(b_1,\ldots,b_n)$とする．
+	\[
+	d(\bm{a},\bm{b}) \coloneqq \| \bm{a} - \bm{b} \|
+	= \sqrt{{a_1 - b_1}^2 + \cdots + {a_n - b_n}^2}
+	= \sqrt{\sum_{i=1}^{n}{(a_i - b_i)}^2}
+	\]
+	となる演算$d : \mathbb{R}^n\times\mathbb{R}^n\to\mathbb{R}$を
+	\index{Euclidean distance}\index{ゆーくりっどきょり@Euclid距離}
+	\emph{Euclid距離(Euclidian distance)}または単に\emph{距離}という．
+\end{dfn}
+
+\begin{prop}{Euclid距離の性質}{Euclidean-distance}
+	$\bm{x},\bm{y}, \bm{z} \in \mathbb{R}^n$とする．
+	このとき，次の性質が成り立つ．
+	\begin{enumerate}
+		\item $d(\bm{x},\bm{y}) \geq 0$\quad (正値性)
+		\item $d(\bm{x},\bm{y}) = 0 \iff \bm{x} = \bm{y}$
+		\item $d(\bm{x},\bm{y}) = d(\bm{y},\bm{x})$\quad (対称性)
+		\item $d(\bm{x},\bm{z})\leq d(\bm{x},\bm{y}) + d(\bm{y},\bm{z})$\quad(三角不等式)
+	\end{enumerate}
+\end{prop}
+
+\begin{proof}
+	(1),(2)は定義より自明なので省略．
+	\begin{enumerate}[start=3]
+		\item
+			\[d(\bm{x},\bm{y}) = \|\bm{x} - \bm{y}\| = |-1|\|\bm{y} - \bm{x}\| = \|\bm{y} - \bm{x}\| = d(\bm{y},\bm{x})\]
+		\item
+			\[d(\bm{x},\bm{z}) = \|\bm{x} - \bm{z}\| = \| \bm{x} - \bm{y} + \bm{y} - \bm{z} \|\]
+			\propref{triangle-inequality}(三角不等式)より，
+			\[\| \bm{x} - \bm{y} + \bm{y} - \bm{z}\| \le \| \bm{x} - \bm{y}\| + \|\bm{y} - \bm{z}\|\]
+			よって，距離の定義より，
+			\[d(\bm{x},\bm{z})\leq d(\bm{x},\bm{y}) + d(\bm{y},\bm{z})\]
+	\end{enumerate}
+\end{proof}
+
+\begin{dfn}{クロス積}{cross-product}
+	$\bm{a},\bm{b} \in \mathbb{R}^3,\bm{a} = (a_1,a_2,a_3),\bm{b}=(b_1,b_2,b_3)$とする．
+	\[
+		\bm{a} \times \bm{b} \coloneqq
+		\begin{pmatrix}
+			a_2 b_3 - a_3 b_2\\
+			a_3 b_1 - a_1 b_3\\
+			a_1 b_2 - a_2 b_1
+		\end{pmatrix}
+	\]
+	となる演算$\times:\mathbb{R}^3\times\mathbb{R}^3\to\mathbb{R}^3$を
+	\index{cross product}\index{くろすせき@クロス積}\emph{クロス積(cross product)}または
+	\index{vector product}\index{べくとるせき@ベクトル積}\emph{ベクトル積(vector product)}，またはしばしば
+	\index{outer product}\index{がいせき@外積}\emph{外積(outer product)}という．
+\end{dfn}
+
+\begin{prop}{クロス積の性質}{cross-product}
+	$\bm{a},\bm{b},\bm{c}\in \mathbb{R}^3,k\in\mathbb{R},\bm{a}=(a_1,a_2,a_3),\bm{b}=(b_1,b_2,b_3),\bm{c}=(c_1,c_2,c_3)$，$\bm{a}$と$\bm{b}$のなす角を$\theta\ (0 \leq \theta \leq \pi)$とする．
+	このとき，次の性質が成り立つ．
+	\begin{enumerate}
+		\item $\braket{\bm{a},\bm{b}\times\bm{c}} = \braket{\bm{b},\bm{c}\times\bm{a}} = \braket{\bm{c},\bm{a}\times\bm{b}} =
+			\begin{vmatrix}
+				a_1 & a_2 & a_3\\
+				b_1 & b_2 & b_3\\
+				c_1 & c_2 & c_3
+			\end{vmatrix}$
+		\item $\bm{a} \times \bm{b} = - \bm{b} \times \bm{a}$
+		\item $(k\bm{a}) \times \bm{b} = \bm{a} \times (k\bm{b}) = k(\bm{a} \times \bm{b})$
+		\item $\bm{a} \times \bm{a} = \bm{0}$
+		\item $\bm{a} \times \bm{b} \perp \bm{a},\ \bm{a} \times \bm{b} \perp \bm{b}$
+		\item $\bm{e}_1\times\bm{e}_2 = \bm{e}_3,\ \bm{e}_2\times\bm{e}_3 = \bm{e}_1,\ \bm{e}_3\times\bm{e}_1 = \bm{e}_2$
+		\item $\bm{a} \times (\bm{b} + \bm{c}) = \bm{a}\times\bm{b} + \bm{a}\times\bm{c}$
+		\item $(\bm{a} + \bm{b}) \times \bm{c} = \bm{a}\times\bm{c} + \bm{b}\times\bm{c}$
+		\item $\bm{a} \times \bm{b} = \bm{0} \iff \bm{a} /\!/ \bm{b}$
+		\item $(\bm{a} \times \bm{b}) \times \bm{c}
+			= \braket{\bm{a},\bm{c}}\bm{b} - \braket{\bm{b},\bm{c}}\bm{a}$
+		\item $(\bm{a} \times \bm{b}) \times \bm{c} + (\bm{b} \times \bm{c}) \times \bm{a} + (\bm{c} \times \bm{a}) \times \bm{b} = 0$
+		\item $\|\bm{a}\times\bm{b}\|^2 = \|\bm{a}\|^2 \|\bm{b}\|^2 - \braket{\bm{a},\bm{b}}^2$
+		\item $\|\bm{a} \times \bm{b}\| = \|\bm{a}\| \|\bm{b}\| \sin \theta$
+	\end{enumerate}
+\end{prop}
+\begin{proof}
+	\begin{enumerate}
+		\item
+			\begin{align*}
+				\begin{vmatrix}
+					a_1 & a_2 & a_3\\
+					b_1 & b_2 & b_3\\
+					c_1 & c_2 & c_3
+				\end{vmatrix}
+				&= a_1 \begin{vmatrix} b_2 & b_3 \\ c_2 & c_3 \end{vmatrix} \braket{\bm{e}_1,\bm{e}_1}
+				- a_2 \begin{vmatrix} b_1 & b_3 \\ c_1 & c_3 \end{vmatrix} \braket{\bm{e}_2,\bm{e}_2}
+				+ a_3 \begin{vmatrix} b_1 & b_2 \\ c_1 & c_2 \end{vmatrix} \braket{\bm{e}_3,\bm{e}_3}\\
+				&=\braket{\bm{a},\bm{b}\times\bm{c}}
+			\end{align*}
+	\end{enumerate}
+
+	(2)--(9)は省略．
+
+	\begin{enumerate}[start=10]
+		\item
+			\begin{align*}
+				(\bm{a} \times \bm{b}) \times \bm{c}
+				&=
+				\begin{pmatrix}
+					(a_3 b_1 - a_1 b_3)c_3 - (a_1 b_2 - a_2 b_1)c_2\\
+					(a_1 b_2 - a_2 b_1)c_1 - (a_2 b_3 - a_3 b_2)c_3\\
+					(a_2 b_3 - a_3 b_2)c_2 - (a_3 b_1 - a_1 b_3)c_1
+				\end{pmatrix}\\
+				&=
+				\begin{pmatrix}
+					(a_2 c_2 + a_3 c_3)b_1 - (b_2 c_2 + b_3 c_3)a_1\\
+					(a_1 c_1 + a_3 c_3)b_2 - (b_1 c_1 + b_3 c_3)a_2\\
+					(a_1 c_1 + a_2 c_2)b_3 - (b_1 c_1 + b_2 c_2)a_3
+				\end{pmatrix}\\
+				&=
+				\begin{pmatrix}
+					(a_1 c_1 + a_2 c_2 + a_3 c_3)b_1 - (b_1 c_1 + b_2 c_2 + b_3 c_3)a_1\\
+					(a_1 c_1 + a_2 c_2 + a_3 c_3)b_2 - (b_1 c_1 + b_2 c_2 + b_3 c_3)a_2\\
+					(a_1 c_1 + a_2 c_2 + a_3 c_3)b_3 - (b_1 c_1 + b_2 c_2 + b_3 c_3)a_3
+				\end{pmatrix}\\
+				&=
+				\braket{\bm{a},\bm{c}}\bm{b} - \braket{\bm{b},\bm{c}}\bm{a}
+			\end{align*}
+		\item
+			\begin{align*}
+				&(\bm{a} \times \bm{b}) \times \bm{c} + (\bm{b} \times \bm{c}) \times \bm{a} + (\bm{c} \times \bm{a}) \times \bm{b}\\
+				&= \braket{\bm{a},\bm{c}}\bm{b} - \braket{\bm{b},\bm{c}}\bm{a}
+				+ \braket{\bm{b},\bm{a}}\bm{c} - \braket{\bm{c},\bm{a}}\bm{b}
+				+ \braket{\bm{c},\bm{b}}\bm{a} - \braket{\bm{a},\bm{b}}\bm{c}\\
+				&= 0
+			\end{align*}
+		\item
+	\end{enumerate}
+\end{proof}
+
+\begin{dfn}{Kroneckerのデルタ}{Kronecker-delta}
+	$i,j\in\mathbb{N}$とする．
+
+	このとき，以下のように定義される記号を
+	\index{Kronecker delta}\index{くろねっかーのでるた@Kroneckerのデルタ}
+	\emph{Kroneckerのデルタ(Kronecker delta)}という．
+	\[
+	\delta_{ij} \coloneqq
+	\begin{cases}
+		1 & (i = j)\\
+		0 & (i \neq j)
+	\end{cases}
+	\]
+\end{dfn}
+
+\begin{dfn}{Levi--Civitaの記号}{Levi--Civita-symbol}
+	$i,j,k$はそれぞれ$1,2,3$のいずれかの値を取るとする．
+
+	このとき，以下のように定義される記号を
+	\index{Levi--Civita symbol}\index{れヴぃちびたのきごう@Levi--Civitaの記号}
+	\emph{Levi--Civitaの記号(Levi--Civita symbol)}という．
+	\[
+	\varepsilon_{ijk} \coloneqq
+	\begin{cases}
+		1  & ((i,j,k) = (1,2,3),(2,3,1),(3,1,2))\\
+		-1 & ((i,j,k) = (2,1,3),(1,3,2),(3,2,1)) \\
+		0  & \text{(otherwise)}
+	\end{cases}
+	\]
+\end{dfn}
+
+\begin{prop}{Levi-Civitaの記号とKroneckerのデルタの公式}{L-K-property}
+	$i,j,k,l,m,n$はそれぞれ$1,2,3$のいずれかの値を取るとする．
+
+	このとき，次のことが成り立つ．
+	\begin{enumerate}
+		\item
+			$\braket{\bm{e}_i,\bm{e}_j}=\delta_{ij}$
+		\item
+			$\braket{\bm{e}_i\times\bm{e}_j,\bm{e}_k}=\varepsilon_{ijk}$
+		\item
+			$\varepsilon_{ijk}\varepsilon_{lmn} =
+				\begin{vmatrix}
+					\delta_{il} & \delta_{im} & \delta_{in}\\
+					\delta_{jl} & \delta_{jm} & \delta_{jn}\\
+					\delta_{kl} & \delta_{km} & \delta_{kn}
+				\end{vmatrix}$
+		\item
+			$\displaystyle\sum_{k=1}^{3}\varepsilon_{ijk}\varepsilon_{lmk}
+			= \delta_{il}\delta_{jm}-\delta_{im}\delta_{jl}$
+		\item
+			$\displaystyle\sum_{j=1}^{3}\sum_{k=1}^{3}\varepsilon_{ijk}\varepsilon_{ljk}
+			= 2\delta_{ij}$
+	\end{enumerate}
+\end{prop}

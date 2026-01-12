@@ -9,3 +9,8 @@
 *.fdb_latexmk
 *.blg
 *.bbl
+*.xml
+*.toc
+*.idx
+*.ilg
+*.ind

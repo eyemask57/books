@@ -10,13 +10,14 @@
 \pagestyle{empty}
 \vspace*{2cm}
 \begin{flushleft}
-	{\Large ジャンル}
+	{\Large 大学数学}
 \\[-10bp]
 \rule{11cm}{3bp}
 \\[5pt]
-\textbf{\Huge タイトル}
+\textbf{\Huge ベクトル解析・曲面・曲線}
 \\[10bp]
-{\Large author}
+{\Large 芦澤 太陽}
+
 \end{flushleft}
 \vspace{10cm}
 
@@ -31,13 +32,25 @@
 
 \newpage
 \mbox{}
-\newpage
-\pagestyle{numonly}
-%\maketitle
-\tableofcontents
-\clearpage
 
+\newpage
+
+\pagestyle{numonly}
+\input{begin}
+
+\tableofcontents
+
+\newpage
+
+\input{symbol}
+
+\newpage
+
+\pagestyle{main}
+\input{1-vector-space}
+\newpage
+\pagestyle{empty}
 
 %\printbibliography
-%\printindex
+\printindex
 \end{document}
